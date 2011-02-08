@@ -1,0 +1,14 @@
+Revision history for File-Slurp-Shortcuts
+
+0.03    2011-02-08
+
+        Rename module from File::Slurp::Chomp -> File::Slurp::Shortcuts.
+
+0.02    2011-02-04
+
+        Add read_file_c/slurp_c and read_file_q/slurp_q.
+
+
+0.01    2011-02-04
+
+        First release.
