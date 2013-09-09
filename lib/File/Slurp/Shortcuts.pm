@@ -1,10 +1,6 @@
 package File::Slurp::Shortcuts;
-BEGIN {
-  $File::Slurp::Shortcuts::VERSION = '0.03';
-}
-# ABSTRACT: Several shortcut functions for File::Slurp
 
-use 5.010; # yes, i know, i'm spoilt.
+use 5.010001; # yes, i know, i'm spoilt.
 use strict;
 use warnings;
 
@@ -19,6 +15,8 @@ use base qw(Exporter);
 our %EXPORT_TAGS = %File::Slurp::EXPORT_TAGS;
 our @EXPORT      = @File::Slurp::EXPORT;
 our @EXPORT_OK   = (@File::Slurp::EXPORT_OK, @my_exportok);
+
+our $VERSION = '0.04'; # VERSION
 
 no strict 'refs';
 # import all of File::Slurp, except our own replacement
@@ -67,7 +65,9 @@ sub read_file_q {
 *slurp_q = \&read_file_q;
 
 1;
+# ABSTRACT: Several shortcut functions for File::Slurp
 
+__END__
 
 =pod
 
@@ -77,21 +77,17 @@ File::Slurp::Shortcuts - Several shortcut functions for File::Slurp
 
 =head1 VERSION
 
-version 0.03
+version 0.04
 
 =head1 SYNOPSIS
 
  # instead of 'use File::Slurp', you 'use File::Slurp::Shortcuts' instead
- use File::Slurp::Shortcuts qw(slurp_cq ...);
- my $email   = slurp_cq('/home/user1/etc/email');
- my @domains = slurp_cq('/home/user1/etc/domains');
- ...
 
 =head1 DESCRIPTION
 
 File::Slurp::Shortcuts is a drop-in replacement for L<File::Slurp>, offering
-more shortcut functions for convenience. It currently also adds autochomping to
-read_file().
+more shortcut functions for convenience. It exports all File::Slurp exports. It
+currently also adds autochomping to read_file().
 
 About autochomping: It is supposed to be in the upcoming version of
 L<File::Slurp>, but since I'm tired of waiting, this module is the band-aid
@@ -100,7 +96,7 @@ It reads in file containing, e.g. "foo\n" into Perl data as "foo".
 
 =head1 FUNCTIONS
 
-=for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file)
+=for Pod::Coverage (append_file|overwrite_file|read_dir|read_file|slurp|write_file|edit_file|edit_file_lines|prepend_file)
 
 For the complete list of functions available, see File::Slurp. Below are
 functions introduced by File::Slurp::Shortcuts:
@@ -111,13 +107,21 @@ Shortcut for:
 
  read_file('path', chomp=>1, ...)
 
+=head2 slurp_c
+
+Alias for read_file_c
+
 =head2 read_file_cq($path, %opts) (or slurp_cq)
 
 Shortcut for:
 
  read_file('path', chomp=>1, err_mode=>'quiet', ...)
 
-I use this a lot to retrieve configuration value from files.
+I personally use this a lot to retrieve configuration value from files.
+
+=head2 slurp_cq
+
+Alias for read_file_cq
 
 =head2 read_file_q($path, %opts) (or slurp_q)
 
@@ -125,7 +129,11 @@ Shortcut for:
 
  read_file('path', err_mode=>'quiet', ...)
 
-I use this a lot to read files that are optional.
+I personally use this a lot to read files that are optional.
+
+=head2 slurp_q
+
+Alias for read_file_q
 
 =head1 SEE ALSO
 
@@ -137,15 +145,9 @@ Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2011 by Steven Haryanto.
+This software is copyright (c) 2013 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
 
 =cut
-
-
-__END__
-
-
-1;

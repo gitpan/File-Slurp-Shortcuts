@@ -2,19 +2,15 @@ NAME
     File::Slurp::Shortcuts - Several shortcut functions for File::Slurp
 
 VERSION
-    version 0.03
+    version 0.04
 
 SYNOPSIS
      # instead of 'use File::Slurp', you 'use File::Slurp::Shortcuts' instead
-     use File::Slurp::Shortcuts qw(slurp_cq ...);
-     my $email   = slurp_cq('/home/user1/etc/email');
-     my @domains = slurp_cq('/home/user1/etc/domains');
-     ...
 
 DESCRIPTION
     File::Slurp::Shortcuts is a drop-in replacement for File::Slurp,
-    offering more shortcut functions for convenience. It currently also adds
-    autochomping to read_file().
+    offering more shortcut functions for convenience. It exports all
+    File::Slurp exports. It currently also adds autochomping to read_file().
 
     About autochomping: It is supposed to be in the upcoming version of
     File::Slurp, but since I'm tired of waiting, this module is the band-aid
@@ -31,19 +27,28 @@ FUNCTIONS
 
      read_file('path', chomp=>1, ...)
 
+  slurp_c
+    Alias for read_file_c
+
   read_file_cq($path, %opts) (or slurp_cq)
     Shortcut for:
 
      read_file('path', chomp=>1, err_mode=>'quiet', ...)
 
-    I use this a lot to retrieve configuration value from files.
+    I personally use this a lot to retrieve configuration value from files.
+
+  slurp_cq
+    Alias for read_file_cq
 
   read_file_q($path, %opts) (or slurp_q)
     Shortcut for:
 
      read_file('path', err_mode=>'quiet', ...)
 
-    I use this a lot to read files that are optional.
+    I personally use this a lot to read files that are optional.
+
+  slurp_q
+    Alias for read_file_q
 
 SEE ALSO
     File::Slurp, obviously.
@@ -52,7 +57,7 @@ AUTHOR
     Steven Haryanto <stevenharyanto@gmail.com>
 
 COPYRIGHT AND LICENSE
-    This software is copyright (c) 2011 by Steven Haryanto.
+    This software is copyright (c) 2013 by Steven Haryanto.
 
     This is free software; you can redistribute it and/or modify it under
     the same terms as the Perl 5 programming language system itself.
