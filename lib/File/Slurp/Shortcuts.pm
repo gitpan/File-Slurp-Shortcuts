@@ -3,6 +3,7 @@ package File::Slurp::Shortcuts;
 use 5.010001; # yes, i know, i'm spoilt.
 use strict;
 use warnings;
+use experimental 'smartmatch';
 
 use File::Slurp qw();
 
@@ -16,7 +17,7 @@ our %EXPORT_TAGS = %File::Slurp::EXPORT_TAGS;
 our @EXPORT      = @File::Slurp::EXPORT;
 our @EXPORT_OK   = (@File::Slurp::EXPORT_OK, @my_exportok);
 
-our $VERSION = '0.04'; # VERSION
+our $VERSION = '0.05'; # VERSION
 
 no strict 'refs';
 # import all of File::Slurp, except our own replacement
@@ -71,13 +72,15 @@ __END__
 
 =pod
 
+=encoding UTF-8
+
 =head1 NAME
 
 File::Slurp::Shortcuts - Several shortcut functions for File::Slurp
 
 =head1 VERSION
 
-version 0.04
+version 0.05
 
 =head1 SYNOPSIS
 
@@ -139,13 +142,29 @@ Alias for read_file_q
 
 L<File::Slurp>, obviously.
 
+=head1 HOMEPAGE
+
+Please visit the project's homepage at L<https://metacpan.org/release/File-Slurp-Shortcuts>.
+
+=head1 SOURCE
+
+Source repository is at L<https://github.com/sharyanto/perl-File-Slurp-Shortcuts>.
+
+=head1 BUGS
+
+Please report any bugs or feature requests on the bugtracker website L<https://rt.cpan.org/Public/Dist/Display.html?Name=File-Slurp-Shortcuts>
+
+When submitting a bug or request, please include a test-file or a
+patch to an existing test-file that illustrates the bug or desired
+feature.
+
 =head1 AUTHOR
 
 Steven Haryanto <stevenharyanto@gmail.com>
 
 =head1 COPYRIGHT AND LICENSE
 
-This software is copyright (c) 2013 by Steven Haryanto.
+This software is copyright (c) 2014 by Steven Haryanto.
 
 This is free software; you can redistribute it and/or modify it under
 the same terms as the Perl 5 programming language system itself.
